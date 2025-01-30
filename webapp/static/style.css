@@ -1,0 +1,302 @@
+:root {
+    --dark1: #0000004d;
+    --dark2: #181c20;
+    --dark3: #212529;
+    --dark4: #2d3135;
+    --dark5: #424549;
+    --dark6: #404346;
+    --dark7: #9c9c9c;
+    --dark8: #dae0e7;
+    --dark9: #262a2e;
+    --red1: #06888a;
+}
+
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+}
+
+h2 {
+    color: #06888a;
+}
+
+h3 {
+    color: #06888a;
+}
+
+.btn {
+    background: #06888a;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #902e31;
+    border: 2px solid #902e31;
+    padding: 3px 8px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 2px solid #ffffff;
+}
+
+table {
+    padding: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    color:#06888a ;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.side-menu {
+    position: fixed;
+    background: #06888a;
+    width: 20vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu .brand-name {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-menu a {
+    font-size: 24px;
+    padding: 10px 40px;
+    display: flex;
+    color: white;
+    align-items: center;
+    text-decoration: none;
+}
+
+.side-menu a:hover {
+    background: #fff;
+    color: #902e31;
+}
+
+.side-menu img {
+    width: 30px;
+    margin: 5px;
+}
+
+.container {
+    position: absolute;
+    right: 0;
+    width: 80vw;
+    height: 100vh;
+    background: #f1f1f1;
+}
+
+.container .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
+    height: 10vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container .header .nav {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .header .nav .brand {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px; /* Added margin to move SIEMENS 20px away from the side menu */
+}
+
+.container .header .nav .user {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.container .header .nav .user img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.container .header .nav .user .img-case {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.container .header .nav .user .img-case img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}   
+
+.container .content {
+    position: relative;
+    margin-top: 10vh;
+    min-height: 90vh;
+}
+
+.container .content .cards {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container .content .cards .card {
+    width: 250px;
+    height: 150px;
+    background: white;
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container .content .cards .card img {
+    width: 100px;
+}
+
+.container .content .content-2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.chart-container {
+    width: 400px; 
+    height: 400px; 
+}
+
+a {
+    text-decoration: none;
+    color: white;    
+}
+
+.container .content .monthly-report {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.container .content .monthly-report .report-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.container .content .monthly-report .table-container {
+    flex: 2; 
+    margin-right: 0px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container .content .monthly-report .chart-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-container canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media (max-width: 768px) {
+    .container .content .monthly-report .report-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container .content .monthly-report .table-container,
+    .container .content .monthly-report .chart-container {
+        margin-right: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: left;
+}
+
+.user-dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.user-dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+.show {
+    display: block;
+}

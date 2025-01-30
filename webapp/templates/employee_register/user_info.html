@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Information</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      /* Add custom styles here */
+      body {
+        background-color: #f8f9fa;
+      }
+      .user-info-container {
+        background-color: #ffffff;
+        padding: 20px;
+        margin-top: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+      }
+      .user-info-container h3 {
+        color: #007bff;
+        margin-bottom: 15px;
+      }
+      .user-info-container p {
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="user-info-container">
+        <h1>User Information</h1>
+        <hr />
+        {% if utilisateur %}
+        <div class="row">
+          <div class="col-md-6">
+            <h3>User Details</h3>
+            <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
+            <p><strong>Prénom:</strong> {{ utilisateur.prenom }}</p>
+            <p><strong>Email:</strong> {{ utilisateur.email }}</p>
+            <p><strong>Étage Assigné:</strong> {{ utilisateur.etage }}</p>
+    
+          </div>
+        </div>
+        {% else %}
+        <p>User not found.</p>
+        {% endif %}
+      </div>
+    </div>
+
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

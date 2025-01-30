@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="side-menu">
+      <div class="brand-name">
+        <h1>Admin</h1>
+      </div>
+      <ul>
+        <li>
+          <a href="http://127.0.0.1:8000/webapp/admin-dashboard/">
+            <img src="{% static 'img/dashboard.png' %}" alt="" />&nbsp;Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1:8000/webapp/guides/">
+            <img src="{% static 'img/employees.png' %}" alt="" />&nbsp;Guides
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1:8000/webapp/serrefils/">
+            <img
+              src="{% static 'img/firefighter.png' %}"
+              alt=""
+            />&nbsp;Serre-files
+          </a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1:8000/webapp/maintenance/">
+            <img src="{% static 'img/tools.png' %}" alt="" />&nbsp;Maintenance
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <div class="nav">
+          <div class="brand">
+            <h1 style="color: #009999">SIEMENS</h1>
+          </div>
+          <div class="user">
+            <div class="img-case" onclick="toggleDropdown()">
+              <img src="{% static 'img/user.png' %}" alt="User Icon" />
+            </div>
+            <div id="userDropdown" class="user-dropdown">
+              <a
+                href="http://127.0.0.1:8000/webapp/logout/"
+                class="logout-button"
+                >Logout</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="cards">
+          {% for floor_number, count in floor_presence_counts.items %}
+          <div class="card">
+            <div class="box">
+              <h2>{{ count }}</h2>
+              <h3>Floor {{ floor_number }}</h3>
+            </div>
+            <div class="icon-case">
+              <img src="{% static 'img/user.png' %}" alt="User Icon" />
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="monthly-report">
+          <div class="report-content">
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Étage</th>
+                    <th>Nombre de présences</th>
+                    <th>Taux de présence (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for data in floor_data %}
+                  <tr>
+                    <td>Étage {{ data.floor_number }}</td>
+                    <td>{{ data.presence_count }}</td>
+                    <td>{{ data.presence_rate }}%</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div class="chart-container">
+              <canvas id="presenceChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleDropdown() {
+        document.getElementById("userDropdown").classList.toggle("show");
+      }
+
+      window.onclick = function(event) {
+        if (!event.target.matches('.img-case img')) {
+          var dropdowns = document.getElementsByClassName("user-dropdown");
+          for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+          const floorData = {{ floor_data|safe }};
+          const labels = floorData.map(data => `Étage ${data.floor_number}`);
+          const presenceRates = floorData.map(data => data.presence_rate);
+
+          const ctx = document.getElementById('presenceChart').getContext('2d');
+          new Chart(ctx, {
+              type: 'pie',
+              data: {
+                  labels: labels,
+                  datasets: [{
+                      label: 'Taux de présence (%)',
+                      data: presenceRates,
+                      backgroundColor: [
+                          '#FF6384',
+                          '#36A2EB',
+                          '#FFCE56',
+                          '#4BC0C0',
+                          '#9966FF'
+                      ],
+                      hoverOffset: 4
+                  }]
+              },
+              options: {
+                  responsive: true,
+                  plugins: {
+                      legend: {
+                          position: 'top',
+                      },
+                      tooltip: {
+                          callbacks: {
+                              label: function (context) {
+                                  const label = context.label || '';
+                                  const value = context.raw || 0;
+                                  return `${label}: ${value}%`;
+                              }
+                          }
+                      }
+                  }
+              }
+          });
+      });
+    </script>
+  </body>
+</html>

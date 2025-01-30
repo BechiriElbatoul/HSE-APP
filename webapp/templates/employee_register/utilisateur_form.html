@@ -1,0 +1,29 @@
+{% extends 'employee_register/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="dark_bg open"></div>
+<div class="popup open">
+    <header>
+        <h2>New Employee</h2>
+    </header>
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <footer>
+            <button type="submit" class="submitBtn">
+                <i class="fas fa-database"></i> Submit
+            </button>
+            <a href="{% url 'utilisateur_list' %}" class="backBtn">
+                <i class="fas fa-stream"></i> Back to list
+            </a>
+        </footer>
+    </form>
+</div>
+<script>
+function closeForm() {
+    document.querySelector('.popup').classList.remove('open');
+    document.querySelector('.dark_bg').style.opacity = '0';
+    document.querySelector('.dark_bg').style.visibility = 'hidden';
+}
+</script>
+{% endblock %}

@@ -1,0 +1,46 @@
+table.utilisateur-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  /* Button styles */
+  .btn {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .btn-success { /* Adjust for creation button */
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+  }
+  
+  .btn-edit {  /* Edit button styles */
+    background-color: #337ab7;
+    color: white;
+    border-color: #337ab7;
+  }
+  
+  .btn-delete { /* Delete button styles */
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+  }
+  
+  /* Icon styles (replace with your desired font library) */
+  .fas {
+    font-size: 1.3em;
+  }
